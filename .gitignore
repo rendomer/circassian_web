@@ -1,20 +1,31 @@
+# Flutter
 build/
 .dart_tool/
 .packages
+.pub-cache/
 .flutter-plugins
 .flutter-plugins-dependencies
 .melos_tool/
 pubspec.lock
+
+# IDE
 .idea/
 .vscode/
 *.iml
-/node_modules
-/dist
-.env
-*.log
+
+# OS
 .DS_Store
-*.lock
+
+# Logs
+*.log
+
+# Web/Node
+node_modules/
+dist/
+
+# Env
+.env
+
+# SQLite
 *.sqlite
-*.iml
-.idea
-.vscode
+*.lock
