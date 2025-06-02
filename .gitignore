@@ -8,3 +8,13 @@ pubspec.lock
 .idea/
 .vscode/
 *.iml
+/node_modules
+/dist
+.env
+*.log
+.DS_Store
+*.lock
+*.sqlite
+*.iml
+.idea
+.vscode
