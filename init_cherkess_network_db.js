@@ -1,25 +1,25 @@
 // init_cherkess_network_db.js
 
-// Подключаемся к базе cherkess_app (если в mongosh не указано - переключаемся)
-use cherkess_app;
+// Подключаемся к базе cherkess_app
+const db = connect("mongodb://localhost:27017/cherkess_app");
 
-// Создаем коллекции (MongoDB создаст их автоматически при вставке, но явно для порядка)
+// Очищаем базу (УДАЛЯЕТ ВСЁ ПРЕДЫДУЩЕЕ)
+db.dropDatabase(); // Закомментируй, если не хочешь терять данные
+
+// Создаем коллекции
 db.createCollection('users');
-db.createCollection('polls');
+db.createCollection('surveys');
 db.createCollection('children');
 
-// Создаем индексы для пользователей (email и phone уникальные для удобства поиска)
+// Индексы для уникальности
 db.users.createIndex({ email: 1 }, { unique: true });
-db.users.createIndex({ phone: 1 }, { unique: true, sparse: true }); // sparse, чтобы разрешить отсутствие телефона
+db.users.createIndex({ phone: 1 }, { unique: true, sparse: true });
+db.survey.createIndex({ date: -1 });
+db.survey.createIndex({ title: 1 });
 
-// Индексы для опросов по дате и названию
-db.polls.createIndex({ date: -1 });
-db.polls.createIndex({ title: 1 });
-
-// Вставляем тестовые документы в users
+// Вставка пользователей
 db.users.insertMany([
   {
-    _id: ObjectId("683c8ef6fb14690fc86c4bd0"),
     firstName: "Aslan",
     lastName: "Kumaxov",
     email: "aslan@example.com",
@@ -35,7 +35,6 @@ db.users.insertMany([
     userId: 1
   },
   {
-    _id: ObjectId("683c8f19fb14690fc86c4bd4"),
     firstName: "Zarema",
     lastName: "Tleuzheva",
     email: "zarema@example.com",
@@ -52,10 +51,9 @@ db.users.insertMany([
   }
 ]);
 
-// Вставляем тестовые документы в polls
-db.polls.insertMany([
+// Вставка опросов
+db.surveys.insertMany([
   {
-    _id: ObjectId("683cb12bfb14690fc86c4bd1"),
     title: "Какие функции нужны в приложении?",
     date: ISODate("2025-06-01T00:00:00Z"),
     question: "Что вы хотите видеть в следующем обновлении?",
@@ -67,7 +65,6 @@ db.polls.insertMany([
     ]
   },
   {
-    _id: ObjectId("683cb5f3fb14690fc86c4bd2"),
     title: "Как часто вы заходите в приложение?",
     date: ISODate("2025-06-02T00:00:00Z"),
     question: "Сколько раз в неделю вы открываете приложение?",
@@ -80,10 +77,9 @@ db.polls.insertMany([
   }
 ]);
 
-// Вставляем пример детей в children
+// Вставка детей
 db.children.insertMany([
   {
-    _id: ObjectId(),
     userId: 1,
     firstName: "Ali",
     lastName: "Kumaxov",
@@ -91,7 +87,6 @@ db.children.insertMany([
     photoUrl: "/photos/children/ali.jpg"
   },
   {
-    _id: ObjectId(),
     userId: 1,
     firstName: "Amina",
     lastName: "Kumaxova",
@@ -100,4 +95,4 @@ db.children.insertMany([
   }
 ]);
 
-print("Init script executed successfully!");
+print("✅ Init script executed successfully!");

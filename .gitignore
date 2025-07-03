@@ -29,3 +29,5 @@ dist/
 # SQLite
 *.sqlite
 *.lock
+    "backend/" 
+"backend/" 
