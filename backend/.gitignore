@@ -1,0 +1,13 @@
+# Игнорировать .env
+.env
+
+# Игнорировать базу данных SQLite
+*.db
+*.sqlite3
+
+# Кэш Python
+__pycache__/
+*.pyc
+
+# Логи
+*.log

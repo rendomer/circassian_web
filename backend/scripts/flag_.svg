@@ -1,0 +1,26 @@
+<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="256" cy="256" r="256" fill="#00796B"></circle>
+  
+  <!-- Arrows -->
+  <g stroke="gold" stroke-width="10" stroke-linecap="round">
+    <line x1="256" y1="120" x2="256" y2="320"></line>
+    <line x1="186" y1="160" x2="256" y2="320"></line>
+    <line x1="326" y1="160" x2="256" y2="320"></line>
+  </g>
+
+  <!-- 12 Stars -->
+  <g fill="gold">
+    <circle cx="256" cy="60" r="8"></circle>
+    <circle cx="292" cy="68" r="8"></circle>
+    <circle cx="324" cy="92" r="8"></circle>
+    <circle cx="344" cy="128" r="8"></circle>
+    <circle cx="350" cy="168" r="8"></circle>
+    <circle cx="340" cy="208" r="8"></circle>
+    <circle cx="256" cy="452" r="8"></circle>
+    <circle cx="220" cy="68" r="8"></circle>
+    <circle cx="188" cy="92" r="8"></circle>
+    <circle cx="168" cy="128" r="8"></circle>
+    <circle cx="162" cy="168" r="8"></circle>
+    <circle cx="172" cy="208" r="8"></circle>
+  </g>
+</svg>
